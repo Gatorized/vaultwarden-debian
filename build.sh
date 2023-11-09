@@ -132,6 +132,8 @@ sed "$DIR/patch/$ARCH_DIR/Dockerfile.patch" -f <( echo "$SEDCOMMANDS" ) | \
 patch "$SRC/docker/Dockerfile.debian" --verbose -o "$DIR/Dockerfile" || \
 exit
 
+bash revert.icons.sh 
+
 sed "/docker.io\/library\/rust/s/bookworm/${OS_VERSION_NAME}/g" -i "$DIR/Dockerfile"
 sed "/docker.io\/library\/debian/s/bookworm/${OS_VERSION_NAME}/g" -i "$DIR/Dockerfile"
 
